@@ -5,15 +5,28 @@ var app = {
         console.log("app.init !");
         app.addEventListenerToActions();
     },
-
     addListenerToActions: () => {
+        // Listen to new list button
         const addListButton = document.getElementById("addListButton");
         addListButton.addEventListener("click", app.showAddListModal);
+        // Listen to close modal buttons
+        const closeButtons = document.querySelectorAll(".close");
+        // J'ai un tableau d'éléments du DOM (NodeList)
+        closeButtons.forEach((closeButton) => {
+            closeButton.addEventListener("click", app.hideModals);
+        });
     },
 
     showAddListModal: (evt) => {
         const modal = document.getElementById("addListModal");
         modal.classList.add("is-active");
+    },
+
+    hideModals: () => {
+        const modals = document.querySelectorAll(".modal");
+        modals.forEach((modal) => {
+            modal.classList.remove("is-active");
+        });
     },
 };
 
