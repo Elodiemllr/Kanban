@@ -3,6 +3,17 @@ var app = {
     // fonction d'initialisation, lancée au chargement de la page
     init: function () {
         console.log("app.init !");
+        app.addEventListenerToActions();
+    },
+
+    addListenerToActions: () => {
+        const addListButton = document.getElementById("addListButton");
+        addListButton.addEventListener("click", app.showAddListModal);
+    },
+
+    showAddListModal: (evt) => {
+        const modal = document.getElementById("addListModal");
+        modal.classList.add("is-active");
     },
 };
 
